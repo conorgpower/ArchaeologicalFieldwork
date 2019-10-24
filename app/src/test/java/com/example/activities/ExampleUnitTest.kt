@@ -1,4 +1,4 @@
-package com.example.archaeologicalfieldwork
+package app.hillforts.activities
 
 import org.junit.Test
 
