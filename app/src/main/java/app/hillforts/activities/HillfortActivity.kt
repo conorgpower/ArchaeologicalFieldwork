@@ -16,6 +16,7 @@ import org.jetbrains.anko.startActivityForResult
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     var hillfort = HillfortModel()
+    var edit = false
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,24 +26,35 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
-        info("Placemark Activity started..")
+        info("Hillfort Activity started..")
+
+        if (intent.hasExtra("hillfort edit")) {
+            edit = true
+            hillfort= intent.extras?.getParcelable<HillfortModel>("hillfort edit")!!
+            btnAdd.setText(R.string.save_hillfort)
+            hillfortTitle.setText(hillfort.title)
+            description.setText(hillfort.description)
+        }
+
 
         btnAdd.setOnClickListener() {
             hillfort.title = hillfortTitle.text.toString()
             hillfort.description = description.text.toString()
-            if (hillfort.title.isNotEmpty()) {
-                app.hillforts.add(hillfort.copy())
-                info("add Button Pressed: $hillfort")
-                for (i in app.hillforts.indices) {
-                    info("Hillfort[$i]:${app.hillforts[i]}")
-                }
-                setResult(RESULT_OK)
-                finish()
+            if (hillfort.title.isEmpty()) {
+                toast(R.string.enter_hillfort_title)
             } else {
-                toast("Please Enter a title")
+                if (edit) {
+                    app.hillforts.update(hillfort.copy())
+                } else {
+                    app.hillforts.create(hillfort.copy())
+
+                }
+            }
+            info("add Button Pressed: $hillfort")
+            setResult(RESULT_OK)
+            finish()
             }
         }
-    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_hillfort, menu)
