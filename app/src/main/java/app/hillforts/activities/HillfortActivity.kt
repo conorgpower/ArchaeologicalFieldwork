@@ -2,6 +2,8 @@ package app.hillforts.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import app.hillforts.main.MainApp
 import app.hillforts.models.HillfortModel
 import kotlinx.android.synthetic.main.activity_hillfort.*
@@ -9,6 +11,7 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import app.hillforts.R
+import org.jetbrains.anko.startActivityForResult
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
@@ -19,6 +22,10 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort)
         app = application as MainApp
+
+        toolbarAdd.title = title
+        setSupportActionBar(toolbarAdd)
+        info("Placemark Activity started..")
 
         btnAdd.setOnClickListener() {
             hillfort.title = hillfortTitle.text.toString()
@@ -35,5 +42,19 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
                 toast("Please Enter a title")
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_hillfort, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.item_cancel -> {
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
