@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.5.0 - 30-10-2019 ***(Merged)***
+  - TASK - [MOB-DEV-5]  - Lab 5 Maps, completed and adapted for archaeological hillforts project.
+
 ## 1.4.0 - 30-10-2019 ***(Merged)***
   - TASK - [MOB-DEV-4]  - Lab 4 Images, completed and adapted for archaeological hillforts project.
 

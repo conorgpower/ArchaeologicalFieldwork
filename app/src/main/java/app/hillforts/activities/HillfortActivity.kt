@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import app.hillforts.main.MainApp
 import app.hillforts.models.HillfortModel
+import app.hillforts.models.Location
 import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -15,6 +16,7 @@ import app.hillforts.R
 import app.hillforts.helpers.readImage
 import app.hillforts.helpers.readImageFromPath
 import app.hillforts.helpers.showImagePicker
+import org.jetbrains.anko.intentFor
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
@@ -22,6 +24,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
     var edit = false
     lateinit var app: MainApp
     val IMAGE_REQUEST = 1
+    val LOCATION_REQUEST = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +69,16 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             setResult(RESULT_OK)
             finish()
         }
+
+        hillfortLocation.setOnClickListener {7
+            val location = Location(52.245696, -7.139102, 15f)
+            if (hillfort.zoom != 0f) {
+                location.lat =  hillfort.lat
+                location.lng = hillfort.lng
+                location.zoom = hillfort.zoom
+            }
+            startActivityForResult(intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -90,6 +103,14 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
                     hillfort.image = data.getData().toString()
                     hillfortImage.setImageBitmap(readImage(this, resultCode, data))
                     chooseImage.setText(R.string.button_changeImage)
+                }
+            }
+            LOCATION_REQUEST -> {
+                if (data != null) {
+                    val location = data.extras?.getParcelable<Location>("location")!!
+                    hillfort.lat = location.lat
+                    hillfort.lng = location.lng
+                    hillfort.zoom = location.zoom
                 }
             }
         }
