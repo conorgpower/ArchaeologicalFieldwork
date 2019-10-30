@@ -37,7 +37,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
         if (intent.hasExtra("hillfort edit")) {
             edit = true
-            hillfort= intent.extras?.getParcelable<HillfortModel>("hillfort edit")!!
+            hillfort = intent.extras?.getParcelable<HillfortModel>("hillfort edit")!!
             btnAdd.setText(R.string.save_hillfort)
             hillfortTitle.setText(hillfort.title)
             description.setText(hillfort.description)

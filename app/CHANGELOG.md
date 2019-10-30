@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.7.0 - 30-10-2019 ***(Merged)***
+  - TASK - [MOB-DEV-7]  - Splash Screen added, app logo and app name updated.
+
 ## 1.6.0 - 30-10-2019 ***(Merged)***
   - TASK - [MOB-DEV-6]  - Lab 6 Persistence, completed and adapted for archaeological hillforts project.
 
