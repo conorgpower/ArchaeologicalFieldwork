@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.6.0 - 30-10-2019 ***(Merged)***
+  - TASK - [MOB-DEV-6]  - Lab 6 Persistence, completed and adapted for archaeological hillforts project.
+
 ## 1.5.0 - 30-10-2019 ***(Merged)***
   - TASK - [MOB-DEV-5]  - Lab 5 Maps, completed and adapted for archaeological hillforts project.
 
