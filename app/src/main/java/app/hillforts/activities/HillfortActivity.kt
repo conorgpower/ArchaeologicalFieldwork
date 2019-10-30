@@ -1,5 +1,6 @@
 package app.hillforts.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -11,13 +12,16 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import app.hillforts.R
-import org.jetbrains.anko.startActivityForResult
+import app.hillforts.helpers.readImage
+import app.hillforts.helpers.readImageFromPath
+import app.hillforts.helpers.showImagePicker
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
     var hillfort = HillfortModel()
     var edit = false
     lateinit var app: MainApp
+    val IMAGE_REQUEST = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +38,14 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             btnAdd.setText(R.string.save_hillfort)
             hillfortTitle.setText(hillfort.title)
             description.setText(hillfort.description)
+            hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+            if (hillfort.image != null) {
+                chooseImage.setText(R.string.button_changeImage)
+            }
+        }
+
+        chooseImage.setOnClickListener {
+            showImagePicker(this, IMAGE_REQUEST)
         }
 
 
@@ -53,8 +65,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             info("add Button Pressed: $hillfort")
             setResult(RESULT_OK)
             finish()
-            }
         }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_hillfort, menu)
@@ -68,5 +80,18 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            IMAGE_REQUEST -> {
+                if (data != null) {
+                    hillfort.image = data.getData().toString()
+                    hillfortImage.setImageBitmap(readImage(this, resultCode, data))
+                    chooseImage.setText(R.string.button_changeImage)
+                }
+            }
+        }
     }
 }
