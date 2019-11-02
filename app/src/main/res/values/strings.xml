@@ -3,6 +3,13 @@
     <string name="button_addHillfort">Add Hillfort</string>
     <string name="hint_hillfortTitle">Hillfort Title</string>
     <string name="hint_hillfortDescription">Description</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+    <string name="button_showHide">Show Password</string>
+    <string name="link_signup">No account yet?\nClick here to create one!</string>
+    <string name="link_login">Already signed up?\nClick here to login!</string>
     <string name="menu_addHillfort">Add</string>
     <string name="menu_cancelHillfort">Cancel</string>
     <string name="menu_deleteHillfort">Delete</string>
