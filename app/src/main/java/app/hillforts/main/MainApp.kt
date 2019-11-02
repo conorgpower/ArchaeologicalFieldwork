@@ -1,19 +1,19 @@
 package app.hillforts.main
 
 import android.app.Application
-import app.hillforts.models.HillfortJSONStore
-import app.hillforts.models.HillfortMemStore
+import app.hillforts.models.UnifiedJSONStore
 import app.hillforts.models.HillfortStore
+import app.hillforts.models.UnifiedStore
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 
 class MainApp : Application(), AnkoLogger {
 
-    lateinit var hillforts: HillfortStore
+    lateinit var unified: UnifiedStore
 
     override fun onCreate() {
         super.onCreate()
-        hillforts = HillfortJSONStore(applicationContext)
+        unified = UnifiedJSONStore(applicationContext)
         info("Main App started")
     }
 }

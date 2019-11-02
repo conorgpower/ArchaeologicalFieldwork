@@ -8,8 +8,12 @@ import kotlinx.android.synthetic.main.activity_login.*
 import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
+import app.hillforts.main.MainApp
+import app.hillforts.models.HillfortModel
 
 class LoginActivity : AppCompatActivity() {
+
+    lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
