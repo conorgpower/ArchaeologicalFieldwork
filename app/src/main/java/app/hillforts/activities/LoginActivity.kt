@@ -3,6 +3,8 @@ package app.hillforts.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import app.hillforts.R
 import kotlinx.android.synthetic.main.activity_login.*
 import android.text.method.PasswordTransformationMethod
@@ -47,6 +49,9 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(applicationContext, HillfortListActivity::class.java)
                     startActivity(intent)
                     finish()
+                } else {
+                    email.validate("Email or Password is incorrect, try again") { false }
+                    password.validate("Email or Password is incorrect, try again") { false }
                 }
             }
 
@@ -57,5 +62,24 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
+        this.addTextChangedListener(object: TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                afterTextChanged.invoke(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
+        })
+    }
+
+    fun EditText.validate(message: String, validator: (String) -> Boolean) {
+        this.afterTextChanged {
+            this.error = if (validator(it)) null else message
+        }
+        this.error = if (validator(this.text.toString())) null else message
     }
 }
