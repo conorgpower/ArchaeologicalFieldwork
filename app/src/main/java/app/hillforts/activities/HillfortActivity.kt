@@ -37,7 +37,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
         if (intent.hasExtra("hillfort edit")) {
             edit = true
-            hillfort = intent.extras?.getParcelable<HillfortModel>("hillfort edit")!!
+            hillfort = intent.extras?.getParcelable("hillfort edit")!!
             btnAdd.setText(R.string.save_hillfort)
             hillfortTitle.setText(hillfort.title)
             description.setText(hillfort.description)
@@ -55,22 +55,22 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener() {
             hillfort.title = hillfortTitle.text.toString()
             hillfort.description = description.text.toString()
+            hillfort.userId = app.appUser.id
             if (hillfort.title.isEmpty()) {
                 toast(R.string.enter_hillfort_title)
             } else {
                 if (edit) {
-                    app.hillforts.update(hillfort.copy())
+                    app.unified.updateHillfort(app.appUser, hillfort.copy())
                 } else {
-                    app.hillforts.create(hillfort.copy())
-
+                    app.unified.createHillfort(app.appUser, hillfort.copy())
                 }
             }
-            info("add Button Pressed: $hillfort")
+            info("Add Button Pressed: $hillfort")
             setResult(RESULT_OK)
             finish()
         }
 
-        hillfortLocation.setOnClickListener {7
+        hillfortLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
             if (hillfort.zoom != 0f) {
                 location.lat =  hillfort.lat
@@ -92,7 +92,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
                 finish()
             }
             R.id.item_delete -> {
-                app.hillforts.delete(hillfort)
+                app.unified.deleteHillfort(app.appUser, hillfort)
                 finish()
             }
         }

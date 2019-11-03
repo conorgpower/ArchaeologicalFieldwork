@@ -1,7 +1,11 @@
 # Changelog
 
+## 1.9.0 - 03-11-2019 ***(Merged)***
+  - TASK - [MOB-DEV-9]  - Sign up and login functionality added.
+                        - Unified JSON for users and hillforts.
+
 ## 1.8.0 - 02-11-2019 ***(Merged)***
-  - TASK - [MOB-DEV-7]  - Sign up and login screens added.
+  - TASK - [MOB-DEV-8]  - Sign up and login screens added.
   
 ## 1.7.0 - 30-10-2019 ***(Merged)***
   - TASK - [MOB-DEV-7]  - Splash Screen added, app logo and app name updated.
