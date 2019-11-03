@@ -13,11 +13,25 @@
     <string name="menu_addHillfort">Add</string>
     <string name="menu_cancelHillfort">Cancel</string>
     <string name="menu_deleteHillfort">Delete</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_settings">Settings</string>
     <string name="enter_hillfort_title">Please Enter a Title</string>
     <string name="save_hillfort">Save Hillfort</string>
     <string name="button_addImage">Add Image</string>
     <string name="button_changeImage">Change Image</string>
+    <string name="button_pickDate">Pick Date of Visit</string>
     <string name="select_hillfort_image">Select Hillfort Image</string>
     <string name="button_location">Set Location</string>
     <string name="title_activity_map">Map</string>
+    <string name="checkbox_visited">Visited</string>
+    <string name="settings_password">Visited</string>
+    <string name="button_update">Update</string>
+    <string name="button_home">Home</string>
+    <string name="button_delete">Delete User</string>
+    <string name="button_logout">Logout</string>
+    <string name="total_users">Total Users</string>
+    <string name="total_posts">Total Posts</string>
+    <string name="total_visited">Total Sites Visited</string>
+    <string name="user_posts">Total User Posts</string>
+    <string name="user_visited">Total User Sites Visited</string>
 </resources>

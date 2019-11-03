@@ -49,6 +49,12 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> startActivityForResult<HillfortActivity>(0)
+            R.id.item_settings -> {
+                finish()
+                val intent = Intent(applicationContext, SettingsActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.item_logout -> startActivityForResult<LoginActivity>(0)
         }
         return super.onOptionsItemSelected(item)
     }

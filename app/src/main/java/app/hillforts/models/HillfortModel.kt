@@ -9,6 +9,8 @@ data class HillfortModel(
         var userId: Long = 0,
         var title: String = "",
         var description: String = "",
+        var notes: String = "",
+        var dateVisited: String = "",
         var image: String = "",
         var lat: Double = 0.0,
         var lng: Double = 0.0,

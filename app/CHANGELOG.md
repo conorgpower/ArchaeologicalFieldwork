@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.10.0 - 03-11-2019 ***(Merged)***
+  - TASK - [MOB-DEV-10]  - Settings with stats added.
+                         - Date visited and location added to card view and edit view.
+                         - Logout and settings added to toolbar.
+
 ## 1.9.0 - 03-11-2019 ***(Merged)***
   - TASK - [MOB-DEV-9]  - Sign up and login functionality added.
                         - Unified JSON for users and hillforts.
