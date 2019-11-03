@@ -67,12 +67,24 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="14sp" />
 
+                <TextView
+                    android:id="@+id/locationEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/description"
+                    android:layout_toEndOf="@+id/imageIcon"
+                    android:textColor="@color/colorBlack"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@+id/imageIcon"/>
+
                 <Button
                     android:id="@+id/hillfortLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorPrimary"
                     android:paddingBottom="8dp"
                     android:paddingTop="8dp"
                     android:stateListAnimator="@null"
@@ -80,17 +92,27 @@
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp"/>
 
+                <TextView
+                    android:id="@+id/editDateVisited"
+                    android:textColor="@color/colorBlack"
+                    android:layout_gravity="center_horizontal"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
                 <Button
-                    android:id="@+id/chooseImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/pickDate"
+                    android:text="@string/button_pickDate"
+                    android:layout_gravity="center_horizontal"
                     android:layout_margin="16dp"
-                    android:background="@color/colorPrimary"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:text="@string/button_addImage"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorPrimary"
                     android:textColor="@color/colorWhite"
-                    android:textSize="16sp" />
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/hillfortImage"
@@ -98,18 +120,30 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@mipmap/ic_launcher" />
 
-
+                <Button
+                    android:id="@+id/chooseImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/button_addImage"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="16sp" />
 
                 <Button
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
-                    android:background="@color/colorPrimary"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addHillfort"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorPrimary"
                     android:textColor="@color/colorWhite"
                     android:textSize="16sp" />
 

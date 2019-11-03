@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.hillforts.activities.SettingsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:fitsSystemWindows="true"
+            app:elevation="0dip"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/colorWhite" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/appBarLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/settings_home"
+                    android:layout_width="195dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_gravity="center"
+                    android:text="@string/button_home"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_email"
+                    android:layout_marginTop="15dp"/>
+
+                <EditText
+                    android:id="@+id/settings_email"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_email" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/settings_password" />
+
+                <EditText
+                    android:id="@+id/settings_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/settings_password" />
+
+                <Button
+                    android:id="@+id/settings_update"
+                    android:layout_width="195dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_gravity="center"
+                    android:text="@string/button_update"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <Button
+                    android:id="@+id/settings_delete"
+                    android:layout_width="195dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorRed"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_gravity="center"
+                    android:text="@string/button_delete"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/settings_totalPosts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/total_posts" />
+
+                <TextView
+                    android:id="@+id/settings_totalUsers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/total_users" />
+
+                <TextView
+                    android:id="@+id/settings_totalSitesVisited"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/total_visited" />
+
+                <TextView
+                    android:id="@+id/settings_userPosts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/user_posts" />
+
+                <TextView
+                    android:id="@+id/settings_userSitesVisited"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/user_visited" />
+
+                <Button
+                    android:id="@+id/settings_logout"
+                    android:layout_width="220dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_border"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/button_logout"
+                    android:layout_gravity="center"
+                    android:textColor="@color/colorWhite" />
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,12 @@
 package app.hillforts.activities
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.CompoundButton
 import app.hillforts.main.MainApp
 import app.hillforts.models.HillfortModel
 import app.hillforts.models.Location
@@ -16,7 +18,15 @@ import app.hillforts.R
 import app.hillforts.helpers.readImage
 import app.hillforts.helpers.readImageFromPath
 import app.hillforts.helpers.showImagePicker
+import kotlinx.android.synthetic.main.activity_hillfort.editDateVisited
+import kotlinx.android.synthetic.main.activity_hillfort.description
+import kotlinx.android.synthetic.main.activity_hillfort.hillfortTitle
+import kotlinx.android.synthetic.main.activity_hillfort.view.*
+import kotlinx.android.synthetic.main.card_hillfort.*
 import org.jetbrains.anko.intentFor
+import java.util.*
+
+
 
 class HillfortActivity : AppCompatActivity(), AnkoLogger {
 
@@ -31,6 +41,19 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         setContentView(R.layout.activity_hillfort)
         app = application as MainApp
 
+        val calander = Calendar.getInstance()
+        val year = calander.get(Calendar.YEAR)
+        val month = calander.get(Calendar.MONTH)
+        val day = calander.get(Calendar.DAY_OF_MONTH)
+
+        pickDate.setOnClickListener() {
+            val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                editDateVisited.setText("" + mDay + "/" + mMonth + "/" + mYear)
+            }, year, month, day)
+            dpd.show()
+        }
+
+
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
         info("Hillfort Activity started..")
@@ -41,6 +64,8 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
             btnAdd.setText(R.string.save_hillfort)
             hillfortTitle.setText(hillfort.title)
             description.setText(hillfort.description)
+            locationEdit.setText("Lat: " + hillfort.lat + ", Long: " + hillfort.lng)
+            editDateVisited.setText(hillfort.dateVisited)
             hillfortImage.setImageBitmap(readImageFromPath(this, hillfort.image))
             if (hillfort.image != null) {
                 chooseImage.setText(R.string.button_changeImage)
@@ -55,6 +80,7 @@ class HillfortActivity : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener() {
             hillfort.title = hillfortTitle.text.toString()
             hillfort.description = description.text.toString()
+            hillfort.dateVisited = editDateVisited.text.toString()
             hillfort.userId = app.appUser.id
             if (hillfort.title.isEmpty()) {
                 toast(R.string.enter_hillfort_title)
