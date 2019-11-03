@@ -10,30 +10,33 @@ import org.jetbrains.anko.startActivityForResult
 import app.hillforts.R
 import app.hillforts.main.MainApp
 import app.hillforts.models.HillfortModel
+import app.hillforts.models.UserModel
 import org.jetbrains.anko.intentFor
 
 class HillfortListActivity : AppCompatActivity(), HillfortListener {
 
     lateinit var app: MainApp
+    lateinit var user: UserModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hillfort_list)
         app = application as MainApp
+        user = app.appUser
 
         toolbar.title = title
         setSupportActionBar(toolbar)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-//        loadHillforts()
+        loadHillforts()
     }
 
-//    private fun loadHillforts() {
-//        showHillforts(app.hillforts.findAll())
-//    }
+    private fun loadHillforts() {
+        showHillforts(this.app.unified.findAllHillfortsForUser(app.appUser))
+    }
 
-    fun showHillforts (hillforts: List<HillfortModel>) {
+    private fun showHillforts (hillforts: List<HillfortModel>) {
         recyclerView.adapter = HillfortAdapter(hillforts, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
@@ -55,7 +58,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        loadHillforts()
+        loadHillforts()
         super.onActivityResult(requestCode, resultCode, data)
     }
 }

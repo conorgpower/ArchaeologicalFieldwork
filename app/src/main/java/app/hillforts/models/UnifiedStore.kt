@@ -1,10 +1,11 @@
 package app.hillforts.models
 
 interface UnifiedStore {
-//    fun findAllHillforts(): List<HillfortModel>
-//    fun createHillforts(hillfort: HillfortModel)
-//    fun updateHillforts(hillfort: HillfortModel)
-//    fun deleteHillforts(hillfort: HillfortModel)
+    fun findAllHillforts(): List<HillfortModel>
+    fun findAllHillfortsForUser(user: UserModel): List<HillfortModel>
+    fun createHillfort(user: UserModel, hillfort: HillfortModel)
+    fun updateHillfort(user: UserModel, hillfort: HillfortModel)
+    fun deleteHillfort(user: UserModel, hillfort: HillfortModel)
 
     fun findAllUsers(): List<UserModel>
     fun createUser(user: UserModel)

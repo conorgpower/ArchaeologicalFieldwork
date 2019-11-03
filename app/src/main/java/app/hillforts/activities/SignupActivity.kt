@@ -12,10 +12,8 @@ import android.widget.EditText
 import app.hillforts.R
 import app.hillforts.main.MainApp
 import app.hillforts.models.UserModel
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
 import org.jetbrains.anko.toast
-import org.jetbrains.anko.info
 
 class SignupActivity : AppCompatActivity() {
 
@@ -55,8 +53,8 @@ class SignupActivity : AppCompatActivity() {
             }
 
             if (email.text.toString().isValidEmail() && password.text.toString().isValidPassword()) {
-                user.email = email.toString()
-                user.password = password.toString()
+                user.email = email.text.toString()
+                user.password = password.text.toString()
                 app.unified.createUser(user)
                 val intent = Intent(applicationContext, LoginActivity::class.java)
                 startActivity(intent)
@@ -67,7 +65,7 @@ class SignupActivity : AppCompatActivity() {
             }
         }
 
-        linkLogin.setOnClickListener() {
+        linkLogin.setOnClickListener {
             val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
             finish()
