@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.10.1 - 03-11-2019 ***(Merged)***
+  - TASK - [MOB-DEV-10]  - Login error messages fixed.
+
 ## 1.10.0 - 03-11-2019 ***(Merged)***
   - TASK - [MOB-DEV-10]  - Settings with stats added.
                          - Date visited and location added to card view and edit view.
