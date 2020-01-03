@@ -12,6 +12,7 @@ import app.hillforts.main.MainApp
 import app.hillforts.models.HillfortModel
 import app.hillforts.models.UserModel
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 
 class HillfortListActivity : AppCompatActivity(), HillfortListener {
 
@@ -49,6 +50,7 @@ class HillfortListActivity : AppCompatActivity(), HillfortListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> startActivityForResult<HillfortActivity>(0)
+            R.id.item_map -> startActivity<HillfortMapsActivity>()
             R.id.item_settings -> {
                 finish()
                 val intent = Intent(applicationContext, SettingsActivity::class.java)
