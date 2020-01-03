@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.11.0 - 03-01-2020 ***(Merged)***
+  - TASK - [MOB-DEV-10]  - Lab 7 MapView, completed.
+
 ## 1.10.1 - 03-11-2019 ***(Merged)***
   - TASK - [MOB-DEV-10]  - Login error messages fixed.
 
