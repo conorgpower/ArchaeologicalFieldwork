@@ -34,4 +34,8 @@
     <string name="total_visited">Total Sites Visited</string>
     <string name="user_posts">Total User Posts</string>
     <string name="user_visited">Total User Sites Visited</string>
+    <string name="title_activity_hillfort_maps">Map of All Hillforts</string>
+    <string name="hillfort_image_placeholder">Hillfort Image</string>
+    <string name="hillfort_title_placeholder">Hillfort Title</string>
+    <string name="hillfort_description_placeholder">Hillfort Description</string>
 </resources>
