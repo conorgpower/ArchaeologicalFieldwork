@@ -1,4 +1,4 @@
-package app.hillforts.activities
+package app.hillforts.views.settings
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +10,10 @@ import android.widget.Toast
 import app.hillforts.R
 import app.hillforts.main.MainApp
 import app.hillforts.models.UserModel
+import app.hillforts.views.hillfortList.HillfortListView
+import app.hillforts.views.login.LoginView
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsView : AppCompatActivity() {
 
     lateinit var app : MainApp
     var user = UserModel()
@@ -63,19 +65,19 @@ class SettingsActivity : AppCompatActivity() {
         userTotalSitesVisited.setText("User Total Sites Visited: " + visitCountUser)
 
         home.setOnClickListener {
-            val intent = Intent(applicationContext, HillfortListActivity::class.java)
+            val intent = Intent(applicationContext, HillfortListView::class.java)
             startActivity(intent)
         }
 
         logout.setOnClickListener {
-            val intent = Intent(applicationContext, LoginActivity::class.java)
+            val intent = Intent(applicationContext, LoginView::class.java)
             startActivity(intent)
-            Toast.makeText(applicationContext, "User Logger Out!", Toast.LENGTH_LONG ).show()
+            Toast.makeText(applicationContext, "User Loggerd Out!", Toast.LENGTH_LONG ).show()
         }
 
         delete.setOnClickListener {
             app.unified.deleteUser(user.copy())
-            val intent = Intent(applicationContext, LoginActivity::class.java)
+            val intent = Intent(applicationContext, LoginView::class.java)
             startActivity(intent)
             Toast.makeText(applicationContext, "User Deleted!", Toast.LENGTH_LONG ).show()
         }

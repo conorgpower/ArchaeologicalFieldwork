@@ -1,4 +1,4 @@
-package app.hillforts.activities
+package app.hillforts.views.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,14 +6,14 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import app.hillforts.R
 
-class SplashScreenActivity : AppCompatActivity() {
+class SplashScreenView : AppCompatActivity() {
     private var mDelayHandler: Handler? = null
     private val SPLASH_DELAY: Long = 3000 //3 seconds
 
     internal val mRunnable: Runnable = Runnable {
         if (!isFinishing) {
 
-            val intent = Intent(applicationContext, LoginActivity::class.java)
+            val intent = Intent(applicationContext, LoginView::class.java)
             startActivity(intent)
             finish()
         }

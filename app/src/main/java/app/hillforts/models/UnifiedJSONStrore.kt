@@ -1,14 +1,11 @@
 package app.hillforts.models
 
 import android.content.Context
-import android.content.Intent
-import app.hillforts.activities.HillfortListActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import app.hillforts.helpers.*
-import app.hillforts.main.MainApp
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -39,6 +36,12 @@ class UnifiedJSONStore : UnifiedStore, AnkoLogger {
 
     override fun findAllHillforts(): List<HillfortModel> {
         return hillforts
+    }
+
+    override fun findHillfortById(id:Long, user: UserModel) : HillfortModel? {
+        val hillforts = findAllHillfortsForUser(user)
+        val foundHillfort: HillfortModel? = hillforts.find { it.id == id }
+        return foundHillfort
     }
 
     override fun findAllHillfortsForUser(user: UserModel): List<HillfortModel> {

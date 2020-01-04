@@ -1,4 +1,4 @@
-package app.hillforts.activities
+package app.hillforts.views.hillfortList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import app.hillforts.R
 import app.hillforts.helpers.readImageFromPath
 import app.hillforts.models.HillfortModel
-import kotlinx.android.synthetic.main.activity_hillfort.view.*
 import kotlinx.android.synthetic.main.card_hillfort.view.*
 import kotlinx.android.synthetic.main.card_hillfort.view.description
 import kotlinx.android.synthetic.main.card_hillfort.view.hillfortTitle
