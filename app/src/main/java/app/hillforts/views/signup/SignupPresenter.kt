@@ -34,7 +34,7 @@ class SignupPresenter(val view: SignupView) {
             view.finish()
             view.toast("User Successfully Registered! Please Login!")
         } else {
-            view.toast("Invalid Email or Password!")
+            view.toast("Invalid Email or Password!\nPassword must contain 8 characters.")
         }
     }
 
