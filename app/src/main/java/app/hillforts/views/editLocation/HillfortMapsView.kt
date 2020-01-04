@@ -1,9 +1,10 @@
-package app.hillforts.activities
+package app.hillforts.views.editLocation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.GoogleMap
 import app.hillforts.R
+import app.hillforts.helpers.readImageFromPath
 import app.hillforts.main.MainApp
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
@@ -12,8 +13,10 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 import kotlinx.android.synthetic.main.activity_hillfort_maps.*
 import kotlinx.android.synthetic.main.content_hillfort_maps.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
-class HillfortMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class HillfortMapsView : AppCompatActivity(), GoogleMap.OnMarkerClickListener, AnkoLogger {
 
     lateinit var map: GoogleMap
     lateinit var app: MainApp
@@ -67,7 +70,12 @@ class HillfortMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListene
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        currentTitle.text = marker.title
-        return false
+        val tag = marker.tag as Long
+        info(tag.toString())
+        val hillfort = app.unified.findHillfortById(tag, app.appUser)
+        currentTitle.text = hillfort!!.title
+        currentDescription.text = hillfort!!.description
+        currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))
+        return true
     }
 }

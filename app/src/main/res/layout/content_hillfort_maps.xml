@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="app.hillforts.activities.HillfortMapsActivity"
+    tools:context="app.hillforts.views.editLocation.HillfortMapsView"
     tools:layout_editor_absoluteY="56dp"
     tools:showIn="@layout/activity_hillfort_maps">
 

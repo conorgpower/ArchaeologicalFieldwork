@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.HillfortMapsActivity"
+            android:name=".views.editLocation.HillfortMapsView"
             android:label="@string/title_activity_hillfort_maps"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activities.SettingsActivity" />
-        <activity android:name=".activities.SignupActivity" />
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SplashScreenActivity">
+        <activity android:name=".views.settings.SettingsView" />
+        <activity android:name=".views.signup.SignupView" />
+        <activity android:name=".views.login.LoginView" />
+        <activity android:name=".views.login.SplashScreenView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,10 +32,12 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activities.MapActivity"
+            android:name=".views.editLocation.EditLocationView"
             android:label="@string/title_activity_map" />
-        <activity android:name=".activities.HillfortActivity" />
-        <activity android:name=".activities.HillfortListActivity" />
+        <activity android:name=".views.editLocation.EditLocationPresenter"/>
+        <activity android:name=".views.hillfort.HillfortView" />
+        <activity android:name=".views.hillfortList.HillfortListView" />
+        <activity android:name=".views.hillfort.HillfortPresenter" />
     </application>
 
 </manifest>

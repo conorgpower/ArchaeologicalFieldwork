@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context="app.hillforts.activities.SplashScreenActivity">
+    tools:context="app.hillforts.views.login.SplashScreenView">
 
     <ImageView
         android:layout_width="match_parent"
