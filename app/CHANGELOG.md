@@ -1,6 +1,9 @@
 # Changelog
 
-## 1.12.0 - 03-02-2020 ***(Merged)***
+## 1.12.1 - 04-02-2020 ***(Merged)***
+  - TASK - [HOTFIX-1]  - Hotfix for hillfort view layout, misalignment in fields.
+
+## 1.12.0 - 04-02-2020 ***(Merged)***
   - TASK - [MOB-DEV-13]  - Lab 8 MVP, completed.
 
 ## 1.11.0 - 03-01-2020 ***(Merged)***
