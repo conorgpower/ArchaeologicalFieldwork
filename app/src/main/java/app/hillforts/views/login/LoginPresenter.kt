@@ -1,5 +1,6 @@
 package app.hillforts.views.login
 
+import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 import android.text.method.PasswordTransformationMethod
 import android.widget.Toast
@@ -8,8 +9,11 @@ import app.hillforts.models.UserModel
 import kotlinx.android.synthetic.main.activity_login.*
 import app.hillforts.views.hillfortList.HillfortListView
 import app.hillforts.views.signup.SignupView
+import org.jetbrains.anko.toast
 
 class LoginPresenter(val view: LoginView) {
+
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     var app: MainApp
 
@@ -21,14 +25,15 @@ class LoginPresenter(val view: LoginView) {
     fun getAllUsers() = app.unified.findAllUsers()
 
     fun doLogin(user: UserModel) {
-        for (i in getAllUsers()) {
-            if (i.email == user.email && i.password == user.password) {
-                app.appUser = i
+
+        auth.signInWithEmailAndPassword(user.email, user.password).addOnCompleteListener(view!!) { task ->
+            if(task.isSuccessful) {
+                app.appUser = user
                 val intent = Intent(view.applicationContext, HillfortListView::class.java)
                 view.startActivity(intent)
                 view.finish()
             } else {
-                Toast.makeText(view.applicationContext, "Incorrect Email or Password!", Toast.LENGTH_LONG ).show()
+                view?.toast("Sign Up Failed: ${task.exception?.message}")
             }
         }
     }
