@@ -1,9 +1,9 @@
 package app.hillforts.views.signup
 
+import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 import android.text.method.PasswordTransformationMethod
 import android.util.Patterns
-import android.widget.Toast
 import app.hillforts.main.MainApp
 import app.hillforts.models.UserModel
 import kotlinx.android.synthetic.main.activity_login.*
@@ -12,6 +12,8 @@ import app.hillforts.views.login.LoginView
 
 class SignupPresenter(val view: SignupView) {
 
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
+
     var app: MainApp
 
     init {
@@ -19,22 +21,15 @@ class SignupPresenter(val view: SignupView) {
     }
 
     fun doSignup(user: UserModel) {
-        if (!user.email.isValidEmail()) {
-            Toast.makeText(view.applicationContext, "Valid Email Required", Toast.LENGTH_LONG ).show()
-        }
-
-        if (!user.password.isValidPassword()) {
-            Toast.makeText(view.applicationContext, "Valid Password Required", Toast.LENGTH_LONG ).show()
-        }
-
-        if (user.email.isValidEmail() && user.password.isValidPassword()) {
-            app.unified.createUser(user)
-            val intent = Intent(view.applicationContext, LoginView::class.java)
-            view.startActivity(intent)
-            view.finish()
-            view.toast("User Successfully Registered! Please Login!")
-        } else {
-            view.toast("Invalid Email or Password!\nPassword must contain 8 characters.")
+        auth.createUserWithEmailAndPassword(user.email, user.password).addOnCompleteListener(view!!) { task ->
+            if(task.isSuccessful) {
+                app.unified.createUser(user)
+                val intent = Intent(view.applicationContext, LoginView::class.java)
+                view.startActivity(intent)
+                view.finish()
+            } else {
+                view?.toast("Sign Up Failed: ${task.exception?.message}")
+            }
         }
     }
 
@@ -53,10 +48,4 @@ class SignupPresenter(val view: SignupView) {
             view.input_password.setTransformationMethod(PasswordTransformationMethod())
         }
     }
-
-    fun String.isValidEmail(): Boolean
-            = this.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
-
-    fun String.isValidPassword(): Boolean
-            = this.isNotEmpty() && (this.length > 7)
 }

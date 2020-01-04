@@ -7,6 +7,7 @@ import app.hillforts.views.editLocation.HillfortMapsView
 import app.hillforts.views.hillfort.HillfortView
 import app.hillforts.views.login.LoginView
 import app.hillforts.views.settings.SettingsView
+import com.google.firebase.auth.FirebaseAuth
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
@@ -41,6 +42,7 @@ class HillfortListPresenter(val view: HillfortListView) {
     }
 
     fun doLogout() {
-        view.startActivityForResult<LoginView>(0)
+        FirebaseAuth.getInstance().signOut()
+        view.startActivity<LoginView>()
     }
 }
