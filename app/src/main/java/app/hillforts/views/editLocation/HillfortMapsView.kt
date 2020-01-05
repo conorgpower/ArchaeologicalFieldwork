@@ -6,6 +6,7 @@ import com.google.android.gms.maps.GoogleMap
 import app.hillforts.R
 import app.hillforts.helpers.readImageFromPath
 import app.hillforts.main.MainApp
+import app.hillforts.models.HillfortModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -61,18 +62,16 @@ class HillfortMapsView : AppCompatActivity(), GoogleMap.OnMarkerClickListener, A
     fun configureMap() {
         map.setOnMarkerClickListener(this)
         map.uiSettings.setZoomControlsEnabled(true)
-        app.unified.findAllHillfortsForUser(app.appUser).forEach {
+        app.unified.findAllHillforts().forEach {
             val loc = LatLng(it.lat, it.lng)
             val options = MarkerOptions().title(it.title).position(loc)
-            map.addMarker(options).tag = it.id
+            map.addMarker(options).tag = it
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
         }
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        val tag = marker.tag as Long
-        info(tag.toString())
-        val hillfort = app.unified.findHillfortById(tag, app.appUser)
+        val hillfort = marker.tag as HillfortModel
         currentTitle.text = hillfort!!.title
         currentDescription.text = hillfort!!.description
         currentImage.setImageBitmap(readImageFromPath(this, hillfort.image))

@@ -8,10 +8,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_hillfort_list.*
 import app.hillforts.R
 import app.hillforts.models.HillfortModel
+import app.hillforts.models.UserModel
 
 class HillfortListView : AppCompatActivity(), HillfortListener {
 
     lateinit var presenter: HillfortListPresenter
+    var user = UserModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +24,7 @@ class HillfortListView : AppCompatActivity(), HillfortListener {
         presenter = HillfortListPresenter(this)
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter =
-            HillfortAdapter(presenter.doGetHillforts(), this)
+        recyclerView.adapter = HillfortAdapter(presenter.doGetHillforts(), this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
 

@@ -12,6 +12,7 @@ import app.hillforts.main.MainApp
 import app.hillforts.models.UserModel
 import app.hillforts.views.hillfortList.HillfortListView
 import app.hillforts.views.login.LoginView
+import com.google.firebase.auth.FirebaseAuth
 
 class SettingsView : AppCompatActivity() {
 
@@ -70,6 +71,8 @@ class SettingsView : AppCompatActivity() {
         }
 
         logout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            app.unified.clear()
             val intent = Intent(applicationContext, LoginView::class.java)
             startActivity(intent)
             Toast.makeText(applicationContext, "User Loggerd Out!", Toast.LENGTH_LONG ).show()

@@ -93,6 +93,10 @@ class UnifiedJSONStore : UnifiedStore, AnkoLogger {
         serialize()
     }
 
+    override fun clear() {
+        hillforts.clear()
+    }
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(users, listType)
         write(context, JSON_FILE, jsonString)
