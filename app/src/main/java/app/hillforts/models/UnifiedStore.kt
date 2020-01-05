@@ -8,6 +8,8 @@ interface UnifiedStore {
     fun updateHillfort(user: UserModel, hillfort: HillfortModel)
     fun deleteHillfort(user: UserModel, hillfort: HillfortModel)
 
+    fun clear()
+
     fun findAllUsers(): List<UserModel>
     fun createUser(user: UserModel)
     fun updateUser(user: UserModel)

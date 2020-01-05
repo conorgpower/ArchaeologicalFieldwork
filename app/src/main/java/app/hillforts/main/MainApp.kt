@@ -1,6 +1,7 @@
 package app.hillforts.main
 
 import android.app.Application
+import app.hillforts.models.HillfortFireStore
 import app.hillforts.models.UnifiedJSONStore
 import app.hillforts.models.UnifiedStore
 import app.hillforts.models.UserModel
@@ -14,7 +15,8 @@ class MainApp : Application(), AnkoLogger {
 
     override fun onCreate() {
         super.onCreate()
-        unified = UnifiedJSONStore(applicationContext)
+//        unified = UnifiedJSONStore(applicationContext)
+        unified = HillfortFireStore(applicationContext)
         info("Main App started")
     }
 }

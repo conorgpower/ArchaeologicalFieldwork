@@ -10,7 +10,6 @@ import kotlinx.android.synthetic.main.activity_hillfort.*
 import org.jetbrains.anko.AnkoLogger
 import app.hillforts.R
 import app.hillforts.helpers.readImageFromPath
-import app.hillforts.views.hillfort.HillfortPresenter
 import kotlinx.android.synthetic.main.activity_hillfort.editDateVisited
 import kotlinx.android.synthetic.main.activity_hillfort.description
 import kotlinx.android.synthetic.main.activity_hillfort.hillfortTitle
@@ -28,9 +27,14 @@ class HillfortView : AppCompatActivity(), AnkoLogger {
 
         presenter = HillfortPresenter(this)
 
-        btnAdd.setOnClickListener { presenter.doAddOrSave(hillfort)}
+        btnAdd.setOnClickListener {
+            hillfort.title = hillfortTitle.text.toString()
+            hillfort.description = description.text.toString()
+            presenter.doAddOrSave(hillfort)}
 
-        pickDate.setOnClickListener { presenter.doDatePicker() }
+        pickDate.setOnClickListener {
+            presenter.doDatePicker()
+        }
 
         chooseImage.setOnClickListener { presenter.doSelectImage() }
 
