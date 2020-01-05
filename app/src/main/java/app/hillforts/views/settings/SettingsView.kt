@@ -72,6 +72,7 @@ class SettingsView : AppCompatActivity() {
 
         logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
+            app.unified.clear()
             val intent = Intent(applicationContext, LoginView::class.java)
             startActivity(intent)
             Toast.makeText(applicationContext, "User Loggerd Out!", Toast.LENGTH_LONG ).show()
